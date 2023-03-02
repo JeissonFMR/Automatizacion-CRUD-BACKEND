@@ -135,8 +135,10 @@ for bibliotecas in bibliotecas_instaladas:
     else:
         print("La biblioteca " + bibliotecas +
               " no está instalada en la carpeta especificada.")
+        inst = 'npm install '+bibliotecas
         # Instalar la bibliotecas en la carpeta especificada
-        subprocess.run(["npm", "install", bibliotecas, "--prefix", route])
+        resul = subprocess.run(inst, shell=True)
+        resul.check_returncode()
 
 
 # Carpetas a crear
