@@ -1,0 +1,118 @@
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
+  const attributes = {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: null,
+      comment: null,
+      primaryKey: true,
+      field: "id",
+      autoIncrement: false,
+    },
+    id_clas_act_grupo: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "id_clas_act_grupo",
+      autoIncrement: false,
+      references: {
+        key: "id",
+        model: "clasificacion_grupo_model",
+      },
+    },
+    id_programa: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "id_programa",
+      autoIncrement: false,
+      references: {
+        key: "id",
+        model: "programa_model",
+      },
+    },
+    id_lider: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "id_lider",
+      autoIncrement: false,
+      references: {
+        key: "id",
+        model: "integrante_model",
+      },
+    },
+    nombre: {
+      type: DataTypes.CHAR,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "nombre",
+      autoIncrement: false,
+    },
+    cod_grupo_lac: {
+      type: DataTypes.CHAR,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "cod_grupo_lac",
+      autoIncrement: false,
+    },
+    reconocimiento: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "reconocimiento",
+      autoIncrement: false,
+    },
+    num_acuerd_inst: {
+      type: DataTypes.CHAR,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "num_acuerd_inst",
+      autoIncrement: false,
+    },
+    fecha_act_inst: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "fecha_act_inst",
+      autoIncrement: false,
+    },
+    url_grupo_lac: {
+      type: DataTypes.CHAR,
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "url_grupo_lac",
+      autoIncrement: false,
+    },
+  };
+  const options = {
+    tableName: "grupo",
+    comment: "",
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
+  };
+  const GrupoModel = sequelize.define("GrupoModel", attributes, options);
+  return GrupoModel;
+};
